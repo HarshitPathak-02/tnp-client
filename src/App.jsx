@@ -5,7 +5,6 @@ import SignupForm from './components/Forms/SignupForm'
 import SigninForm from './components/Forms/SigninForm'
 import "./App.css"
 import Tests from './pages/Tests/Tests'
-import TestCard from './components/TestCard/TestCard'
 import Header from './components/Header/Header'
 
 function App() {
@@ -19,7 +18,6 @@ function App() {
           <Route path='/signup' element={<SignupForm/>}></Route>
           <Route path='/signin' element={<SigninForm/>}></Route>
           <Route path='/tests' element={<Tests/>}></Route>
-          <Route path='/test-card' element={<TestCard/>}></Route>
         </Routes>
       </BrowserRouter>
     </>

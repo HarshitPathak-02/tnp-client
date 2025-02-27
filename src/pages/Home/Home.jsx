@@ -148,16 +148,16 @@ const Home = () => {
           <h2>Our Beloved Companies...</h2>
         </div>
         <div className="home-companies-inner-box">
-          <Card image={tcs} />
-          <Card image={kanwat} />
-          <Card image={infosys} />
-          <Card image={tcs} />
+          <Card image={tcs} type="company-card"/>
+          <Card image={kanwat} type="company-card"/>
+          <Card image={infosys} type="company-card"/>
+          <Card image={tcs} type="company-card"/>
         </div>
         <div className="home-companies-inner-box">
-          <Card image={kanwat} />
-          <Card image={infosys} />
-          <Card image={tcs} />
-          <Card image={kanwat} />
+          <Card image={kanwat} type="company-card"/>
+          <Card image={infosys} type="company-card"/>
+          <Card image={tcs} type="company-card"/>
+          <Card image={kanwat} type="company-card"/>
         </div>
       </div>
       <div className="home-students-box">
@@ -165,16 +165,16 @@ const Home = () => {
           <h2>Our Placed Students...</h2>
         </div>
         <div className="home-students-inner-box">
-          <Card image={tcs} />
-          <Card image={kanwat} />
-          <Card image={infosys} />
-          <Card image={tcs} />
+          <Card image={tcs} type="student-card" studentName="Raju" studentCompany="TCS" studentPackage="4 Lakhs Per Annum"/>
+          <Card image={kanwat} type="student-card" studentName="Raju" studentCompany="TCS" studentPackage="4 Lakhs Per Annum"/>
+          <Card image={infosys} type="student-card" studentName="Raju" studentCompany="TCS" studentPackage="4 Lakhs Per Annum"/>
+          <Card image={tcs} type="student-card" studentName="Raju" studentCompany="TCS" studentPackage="4 Lakhs Per Annum"/>
         </div>
         <div className="home-students-inner-box">
-          <Card image={kanwat} />
-          <Card image={infosys} />
-          <Card image={tcs} />
-          <Card image={kanwat} />
+          <Card image={kanwat} type="student-card" studentName="Raju" studentCompany="TCS" studentPackage="4 Lakhs Per Annum"/>
+          <Card image={infosys} type="student-card" studentName="Raju" studentCompany="TCS" studentPackage="4 Lakhs Per Annum"/>
+          <Card image={tcs} type="student-card" studentName="Raju" studentCompany="TCS" studentPackage="4 Lakhs Per Annum"/>
+          <Card image={kanwat} type="student-card" studentName="Raju" studentCompany="TCS" studentPackage="4 Lakhs Per Annum"/>
         </div>
       </div>
     </div>

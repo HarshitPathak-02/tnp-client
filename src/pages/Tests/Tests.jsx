@@ -1,6 +1,6 @@
 import React from "react";
 import "./Tests.css";
-import TestCard from ".././../components/TestCard/TestCard";
+import Card from "../../components/Card/Card";
 
 const Tests = () => {
   return (
@@ -39,14 +39,14 @@ const Tests = () => {
       </div>
       <div className="tests-main-down">
         <div className="tests-main-down-up">
-          <TestCard title="TCS online assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60"/>
-          <TestCard title="TCS online assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60"/>
-          <TestCard title="TCS online assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60"/>
+          <Card title="TCS online assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60" type="test-card"/>
+          <Card title="TCS online assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60" type="test-card"/>
+          <Card title="TCS online assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60" type="test-card"/>
         </div>
         <div className="tests-main-down-down">
-        <TestCard title="TCS online assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60"/>
-        <TestCard title="TCS online assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60"/>
-        <TestCard title="TCS online assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60"/>
+        <Card title="TCS online assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60" type="test-card"/>
+        <Card title="TCS online assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60" type="test-card"/>
+        <Card title="TCS online assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60" type="test-card"/>
         </div>
       </div>
     </div>

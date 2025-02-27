@@ -1,13 +1,55 @@
-.company-box {
+.box {
     height: 20rem;
-    width: 20rem;
+    width: 18rem;
     border-radius: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.company-img {
+.box-img {
     height: 15rem;
     width: 15rem;
+}
+
+.test-card-main{
+    height: 300px;
+    width:300px;
+}
+.card-body h5{
+    display: flex;
+    margin-bottom: 1rem;
+}
+.card-body a {
+    gap: 2rem;
+    height: 35px;
+}
+.test-card-charc{
+    display: flex;
+    flex-direction: row;
+    gap:2rem;
+}
+
+.student-card {
+    width: 18rem;
+    height:20rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    background-color: #fafbfd;
+    border-radius: 1rem;
+
+}
+
+.student-card-desc {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+}
+
+.student-card img {
+    height: 12rem;
+    width: 100%;
 }

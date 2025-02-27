@@ -3,16 +3,17 @@ import "./Header.css"
 
 import { Link } from 'react-router-dom'
 
+import DemoLogo from "../../assets/images/demo-logo.webp"
+
 const Header = () => {
   return (
     <div className="navbar">
         <ul className="navbarr">
           <div className="navbarr-left">
-            <img src="logo" alt=""/>
+            <Link to="/"><img src={DemoLogo} alt=""/></Link>
             <li><Link className='navbar-lnk' to="/">Home</Link></li>
-            <li><Link className='navbar-lnk' to="/services">Services</Link></li>
-            <li><Link className='navbar-lnk' to="/contactus">Contact Us</Link></li>
-            <li><Link className='navbar-lnk' to="/about">About</Link></li>
+            <li><Link className='navbar-lnk' to="/tests">Tests</Link></li>
+            <li><Link className='navbar-lnk' to="https://uitshivpuri.rgpv.ac.in/">UIT RGPV Shivpuri</Link></li>
           </div>
           <div className="login-signup">
             <Link className='navbar-lnk' to='/signin'>Login</Link>
