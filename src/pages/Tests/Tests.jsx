@@ -9,29 +9,29 @@ const Tests = () => {
         <h1>Our Tests</h1>
       </div>
       <div className="tests-main-mid">
-        <div class="dropdown">
+        <div className="dropdown">
           <button
-            class="btn btn-secondary dropdown-toggle"
+            className="btn btn-secondary dropdown-toggle"
             type="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            Dropdown button
+            Choose your company
           </button>
-          <ul class="dropdown-menu">
+          <ul className="dropdown-menu">
             <li>
-              <a class="dropdown-item" href="#">
-                Action
+              <a className="dropdown-item" href="#">
+                TCS
               </a>
             </li>
             <li>
-              <a class="dropdown-item" href="#">
-                Another action
+              <a className="dropdown-item" href="#">
+                Infosys
               </a>
             </li>
             <li>
-              <a class="dropdown-item" href="#">
-                Something else here
+              <a className="dropdown-item" href="#">
+                Accenture
               </a>
             </li>
           </ul>
@@ -39,14 +39,14 @@ const Tests = () => {
       </div>
       <div className="tests-main-down">
         <div className="tests-main-down-up">
-          <TestCard />
-          <TestCard />
-          <TestCard />
+          <TestCard title="TCS online assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60"/>
+          <TestCard title="TCS online assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60"/>
+          <TestCard title="TCS online assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60"/>
         </div>
         <div className="tests-main-down-down">
-          <TestCard />
-          <TestCard />
-          <TestCard />
+        <TestCard title="TCS online assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60"/>
+        <TestCard title="TCS online assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60"/>
+        <TestCard title="TCS online assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60"/>
         </div>
       </div>
     </div>

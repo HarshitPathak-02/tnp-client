@@ -21,7 +21,7 @@ import Card from "../../components/Card/Card";
 
 const Home = () => {
   return (
-    <div className="home-page">
+    <div className="home-page #home">
       <div className="home-hero">
         <div className="home-hero-info">
           <div className="home-hero-info-content">

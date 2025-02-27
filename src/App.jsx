@@ -6,12 +6,14 @@ import SigninForm from './components/Forms/SigninForm'
 import "./App.css"
 import Tests from './pages/Tests/Tests'
 import TestCard from './components/TestCard/TestCard'
+import Header from './components/Header/Header'
 
 function App() {
 
   return (
     <>
       <BrowserRouter>
+      <Header/>
         <Routes>
           <Route path='/' element={<Home/>}></Route>
           <Route path='/signup' element={<SignupForm/>}></Route>
