@@ -1,0 +1,13 @@
+.company-box {
+    height: 20rem;
+    width: 20rem;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.company-img {
+    height: 15rem;
+    width: 15rem;
+}
