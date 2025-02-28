@@ -16,8 +16,6 @@ const SigninForm = () => {
     // console.log(formdata.fullname);
   };
 
-  const login = async () => {};
-
   const submitHandler = async (e) => {
     e.preventDefault();
 

@@ -1,13 +1,60 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Footer.css";
 
 import DemoLogo from "../../assets/images/demo-logo.webp";
+import axios from "axios";
 
 const Footer = () => {
+  const [formdata, setFormdata] = useState({
+    name: "",
+    email: "",
+    message: "",
+    organization: "",
+    city: "",
+  });
+
+  const handleChange = (e) => {
+    setFormdata({ ...formdata, [e.target.name]: e.target.value });
+    // console.log(formdata.fullname);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    setFormdata({
+      name: "",
+      email: "",
+      message: "",
+      organization: "",
+      city: "",
+    });
+
+    try {
+      await axios.post("http://localhost:8000/contact-us", {
+        name: formdata.name,
+        email: formdata.email,
+        message: formdata.message,
+        city: formdata.city,
+        organization: formdata.organization,
+      }).then((response)=>{
+        if (response.data.msg === "contact-form-saved") {
+          alert('mail send');
+        }
+      }).catch((err)=>{
+        if(err.response.data==='Unauthorized'){
+          alert("wrong")
+        }
+      });
+    } catch (e) {
+
+    }
+
+  };
+
   return (
-    <div class="mainfooter">
-      <div class="mainfooter-upper">
-        <div class="mainfooter-upper-left">
+    <div className="mainfooter">
+      <div className="mainfooter-upper">
+        <div className="mainfooter-upper-left">
           <div className="mainfooter-upper-left-up">
             <img src={DemoLogo} alt="" />
             <h4>Training and Placement Cell</h4>
@@ -26,78 +73,96 @@ const Footer = () => {
               UIT RGPV Shivpuri, Satanwanda Kalan, Shivpuri, Madhya Pradesh
             </h5>
           </div>
-          <div class="mainfooter-lower-left">
+          <div className="mainfooter-lower-left">
             <h5>
-              <i class="fa-solid fa-copyright"></i> HaNaKoRa 2025
+              <i className="fa-solid fa-copyright"></i> HaNaKoRa 2025
             </h5>
           </div>
         </div>
-        <div class="mainfooter-upper-right">
+        <div className="mainfooter-upper-right">
           <h2>Talk with Us !!</h2>
-          <form class="row g-3 needs-validation form" novalidate>
-            <div class="col-md-6">
-              <label for="validationCustom01" class="form-label">
-                First name
+          <form
+            className="row g-3 needs-validation form"
+            onSubmit={handleSubmit}
+            noValidate
+          >
+            <div className="col-md-6">
+              <label htmlFor="name" className="form-label">
+                Name
               </label>
               <input
                 type="text"
-                class="form-control"
-                id="validationCustom01"
+                className="form-control"
+                id="name"
+                name="name"
+                value={formdata.name}
+                onChange={handleChange}
                 required
               />
-              <div class="valid-feedback">Looks good!</div>
+              <div className="valid-feedback">Looks good!</div>
             </div>
-            <div class="col-md-6">
-              <label for="validationCustom02" class="form-label">
-                Last name
+            <div className="col-md-6">
+              <label htmlFor="email" className="form-label">
+                Email
+              </label>
+              <input
+                type="email"
+                className="form-control"
+                id="email"
+                name="email"
+                value={formdata.email}
+                onChange={handleChange}
+                required
+              />
+              <div className="valid-feedback">Looks good!</div>
+            </div>
+            <div className="col-md-6">
+              <label htmlFor="city" className="form-label">
+                City
               </label>
               <input
                 type="text"
-                class="form-control"
-                id="validationCustom02"
+                className="form-control"
+                id="city"
+                name="city"
+                value={formdata.city}
+                onChange={handleChange}
                 required
               />
-              <div class="valid-feedback">Looks good!</div>
+              <div className="valid-feedback">Looks good!</div>
             </div>
-            <div class="col-md-6">
-              <label for="validationCustom02" class="form-label">
-                Last name
+            <div className="col-md-6">
+              <label htmlFor="organization" className="form-label">
+                Organization
               </label>
               <input
                 type="text"
-                class="form-control"
-                id="validationCustom03"
+                className="form-control"
+                id="organization"
+                name="organization"
+                value={formdata.organization}
+                onChange={handleChange}
                 required
               />
-              <div class="valid-feedback">Looks good!</div>
+              <div className="valid-feedback">Looks good!</div>
             </div>
-            <div class="col-md-6">
-              <label for="validationCustom02" class="form-label">
-                Last name
+            <div className="col-md-12">
+              <label htmlFor="message" className="form-label">
+                Message
               </label>
               <input
                 type="text"
-                class="form-control"
-                id="validationCustom04"
+                className="form-control"
+                id="message"
+                name="message"
+                value={formdata.message}
+                onChange={handleChange}
                 required
               />
-              <div class="valid-feedback">Looks good!</div>
+              <div className="valid-feedback">Looks good!</div>
             </div>
-            <div class="col-md-12">
-              <label for="validationCustom02" class="form-label">
-                Last name
-              </label>
-              <input
-                type="text"
-                class="form-control"
-                id="validationCustom05"
-                required
-              />
-              <div class="valid-feedback">Looks good!</div>
-            </div>
-
-            <div class="col-12">
-              <button class="btn btn-primary" type="submit">
+            <div className="col-12">
+              <button className="btn btn-primary" type="submit">
                 Submit form
               </button>
             </div>
