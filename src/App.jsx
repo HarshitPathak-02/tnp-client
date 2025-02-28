@@ -6,6 +6,8 @@ import SigninForm from './components/Forms/SigninForm'
 import "./App.css"
 import Tests from './pages/Tests/Tests'
 import Header from './components/Header/Header'
+import Footer from './components/Footer/Footer'
+
 
 function App() {
 
@@ -19,6 +21,7 @@ function App() {
           <Route path='/signin' element={<SigninForm/>}></Route>
           <Route path='/tests' element={<Tests/>}></Route>
         </Routes>
+        <Footer/>
       </BrowserRouter>
     </>
   )
