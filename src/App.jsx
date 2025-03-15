@@ -7,7 +7,6 @@ import "./App.css"
 import Tests from './pages/Tests/Tests'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
-import StudentDashboard from './pages/StudentDashboard/StudentDashboard'
 
 import TestScreen from './pages/TestScreen/TestScreen'
 
