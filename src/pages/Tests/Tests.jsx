@@ -39,14 +39,14 @@ const Tests = () => {
       </div>
       <div className="tests-main-down">
         <div className="tests-main-down-up">
-          <Card title="TCS online assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60" type="test-card"/>
-          <Card title="TCS online assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60" type="test-card"/>
-          <Card title="TCS online assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60" type="test-card"/>
+          <Card title="TCS online assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60" type="test-card" path="/tests/tcs-online-assessment"/>
+          <Card title="TCS online assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60" type="test-card" path="/tests/tcs-online-assessment"/>
+          <Card title="TCS online assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60" type="test-card" path="/tests/tcs-online-assessment"/>
         </div>
         <div className="tests-main-down-down">
-        <Card title="TCS online assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60" type="test-card"/>
-        <Card title="TCS online assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60" type="test-card"/>
-        <Card title="TCS online assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60" type="test-card"/>
+        <Card title="TCS online assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60" type="test-card" path="/tests/tcs-online-assessment"/>
+        <Card title="TCS online assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60" type="test-card" path="/tests/tcs-online-assessment"/>
+        <Card title="TCS online assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60" type="test-card" path="/tests/tcs-online-assessment"/>
         </div>
       </div>
     </div>

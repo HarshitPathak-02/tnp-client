@@ -1,5 +1,6 @@
 import React from "react";
 import "./Card.css";
+import { Link } from "react-router-dom";
 
 const Card = (props) => {
   return (
@@ -29,9 +30,9 @@ const Card = (props) => {
                 {props.questions} <i className="fa-solid fa-question"></i>
               </p>
             </div>
-            <a href="#" className="btn btn-primary">
+            <Link to={props.path} className="btn btn-primary">
               <h6>Go somewhere</h6>
-            </a>
+            </Link>
           </div>
         </div>
       )}

@@ -8,6 +8,7 @@ import Tests from './pages/Tests/Tests'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 
+import TestScreen from './pages/TestScreen/TestScreen'
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
           <Route path='/signup' element={<SignupForm/>}></Route>
           <Route path='/signin' element={<SigninForm/>}></Route>
           <Route path='/tests' element={<Tests/>}></Route>
+          <Route path='/tests/tcs-online-assessment' element={<TestScreen/>}></Route>
         </Routes>
         <Footer/>
       </BrowserRouter>
