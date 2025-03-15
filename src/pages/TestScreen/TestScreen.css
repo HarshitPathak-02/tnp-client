@@ -1,5 +1,10 @@
-.caraousel-btns {
+.main-test-card{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    border: 2px solid black;
+}
+.main-test-card-lower{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
 }
