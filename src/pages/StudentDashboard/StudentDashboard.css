@@ -1,0 +1,21 @@
+.student-dashboard-main{
+    display: flex;
+    flex-direction: column;
+}
+.student-dashboard-main-up{
+    display: flex;
+}
+.student-dashboard-main-up-left img{
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+}
+.student-dashboard-main-up-right {
+    display: flex;
+    flex-direction: column;
+
+}
+.student-dashboard-main-up-right p{
+    display: flex;
+    flex-direction: row;
+}

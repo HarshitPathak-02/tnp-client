@@ -7,6 +7,7 @@ import "./App.css"
 import Tests from './pages/Tests/Tests'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
+import StudentDashboard from './pages/StudentDashboard/StudentDashboard'
 
 import TestScreen from './pages/TestScreen/TestScreen'
 
@@ -21,7 +22,7 @@ function App() {
           <Route path='/signup' element={<SignupForm/>}></Route>
           <Route path='/signin' element={<SigninForm/>}></Route>
           <Route path='/tests' element={<Tests/>}></Route>
-          <Route path='/tests/tcs-online-assessment' element={<TestScreen/>}></Route>
+          <Route path='/StudentDashboard' element={<StudentDashboard/>}></Route>
         </Routes>
         <Footer/>
       </BrowserRouter>
