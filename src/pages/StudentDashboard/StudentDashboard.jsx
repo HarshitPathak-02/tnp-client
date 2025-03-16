@@ -37,10 +37,29 @@ const StudentDashboard = () => {
             <div className="student-dashboard-main-down">
                 <div className="student-dashboard-main-down-up">
                     <h2>Test History</h2>
+        <table>
+            <tr>
+                <th>TEST-NAME</th>
+                <th>COMPANY-NAME</th>
+                <th>MARKS-OBTAINED</th>
+                <th>DATE</th>
+                <th>TIME</th>
+            </tr>
+            <tr>
+                <td>Aptitude</td>
+                <td>TCS</td>
+                <td>60</td>
+                <td>XX-XX-XXXX</td>
+                <td>XX:XX</td>
+                
+            </tr>
+            
+        </table>
+    </div>
                 </div>
             </div>
 
-        </div>
+        
     )
 }
 
