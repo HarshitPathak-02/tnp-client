@@ -3,12 +3,45 @@
     flex-direction: column;
     border: 2px solid black;
 
+    background: white;
+}
+
+
+h3 {
+    color: #333;
+}
+
+.question {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    margin: 8px ;
+    padding: 8px;
+    background: #cedcf4;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.option:hover {
+    background: #889cbc;
+}
+
+.main-test-card-mid input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+
 }
 .main-test-card-lower{
     display: flex;
     flex-direction: row;
     gap: 2rem;
 }
+
 .main-test-card-mid button{
     height: 35px;
     width: 200px;
@@ -22,3 +55,16 @@
     width: 100px;
     border-top-left-radius: 10px;
 }
+
+.main-test-card-lower button{
+    height: 30px;
+    width: 100px;
+    border-top-left-radius: 8px;
+    background-color: #cedcf4;
+    
+
+}
+button:hover{
+    background-color: azure;
+}
+

@@ -22,8 +22,10 @@ function App() {
           <Route path='/signup' element={<SignupForm/>}></Route>
           <Route path='/signin' element={<SigninForm/>}></Route>
           <Route path='/tests' element={<Tests/>}></Route>
-          <Route path='/tests/tcs-online-assessment' element={<TestScreen/>}></Route>
+
           <Route path='/student-dashboard' element={<StudentDashboard/>}></Route>
+          <Route path='/tests/:company/:testName' element={<TestScreen/>}></Route>
+
 
         </Routes>
         <Footer/>
