@@ -1,22 +1,24 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import "./StudentDashboard.css"
+import { UserContext } from '../../context/UserContext'
 
 const StudentDashboard = () => {
+
+    const {user} = useContext(UserContext)
+
     return (
         <div className="student-dashboard-main">
             <div className="student-dashboard-main-up">
 
                 <div className="student-dashboard-main-up-left">
                     <img src="card1.jpg" alt="Albart Flores" className="profile-pic" />
-
                     <div className="student-dashboard-main-up-right">
-                        <h2>Student Name</h2>
+                        <h2>{user.fullname}</h2>
                         <div className="student-dashboard-main-up-down-right">
-                            <p><strong>Student ID:</strong> <br />00-xxxx-y</p>
-                            <p><strong>Branch</strong><br />xxxxxx</p>
-                            <p><strong>College</strong> <br />xxxxx</p>
-                            <p><strong>Date of Admission</strong> <br /> xx-xx-xxx</p>
-                            <p><strong>Email:</strong><br /> titu@titu.com</p>
+                            <p><strong>Enrollment No</strong> <br/>{user.enrollment}</p>
+                            <p><strong>Branch</strong><br />{user.branch}</p>
+                            <p><strong>College</strong> <br />{user.college}</p>
+                            <p><strong>Email</strong><br />{user.email}</p>
                         </div>
                     </div>
                 </div>
@@ -32,7 +34,11 @@ const StudentDashboard = () => {
                     </div>
                 </div>
             </div>
-            <div className="student-dashboard-main-down"></div>
+            <div className="student-dashboard-main-down">
+                <div className="student-dashboard-main-down-up">
+                    <h2>Test History</h2>
+                </div>
+            </div>
 
         </div>
     )
