@@ -9,6 +9,7 @@ import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 
 import TestScreen from './pages/TestScreen/TestScreen'
+import StudentDashboard from './pages/StudentDashboard/StudentDashboard'
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
           <Route path='/signin' element={<SigninForm/>}></Route>
           <Route path='/tests' element={<Tests/>}></Route>
           <Route path='/tests/tcs-online-assessment' element={<TestScreen/>}></Route>
+          <Route path='/student-dashboard' element={<StudentDashboard/>}></Route>
 
         </Routes>
         <Footer/>

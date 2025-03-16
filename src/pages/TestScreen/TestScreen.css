@@ -2,9 +2,23 @@
     display: flex;
     flex-direction: column;
     border: 2px solid black;
+
 }
 .main-test-card-lower{
     display: flex;
     flex-direction: row;
     gap: 2rem;
+}
+.main-test-card-mid button{
+    height: 35px;
+    width: 200px;
+    border-radius: 15px;
+}
+.main-test-card-mid p{
+    font-size: 20px;
+}
+.main-test-card-lower button{
+    height: 35px;
+    width: 100px;
+    border-top-left-radius: 10px;
 }

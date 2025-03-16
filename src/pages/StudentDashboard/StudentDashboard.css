@@ -1,0 +1,76 @@
+.student-dashboard-main {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+
+.student-dashboard-main-up-left {
+    display: flex;
+    align-items: center;
+    background: whitesmoke;
+    border: 0.5px solid black;
+    border-radius: 2px;
+
+}
+
+.student-dashboard-main-up-left img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-right: 30px;
+    margin-left: 10px;
+}
+
+
+.student-dashboard-main-up-right h2 {
+    margin-bottom: 10px;
+    font-style: bold;
+}
+
+.student-dashboard-main-up-down-right {
+    display: flex;
+    color: #4f3f3f;
+    margin: 4px;
+    gap: 2rem;
+}
+
+.student-dashboard-main-mid {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.student-dashboard-main-mid-card-left {
+    display: flex;
+    flex-direction: column;
+
+    width: 250px;
+    height: 150px;
+    padding: 20px;
+}
+
+
+.student-dashboard-main-mid-card-left h2 {
+    font-size: 22px;
+    color: #492f2f;
+
+}
+
+.student-dashboard-main-mid-card-left p {
+    font-size: 20px;
+    color: #3f3030;
+    margin-top: -10px;
+
+}
+
+.student-dashboard-main-mid-card {
+    display: flex;
+    width: 250px;
+    border: 1px solid black;
+    border-radius: 4px;
+    align-items: center;
+    background-color: rgb(90, 112, 113);
+}

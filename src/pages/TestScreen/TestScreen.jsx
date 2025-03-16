@@ -20,30 +20,30 @@ const TestScreen = () => {
         return (
           <div class="main-test-card">
             <div class="main-test-card-mid">
-              <p>q1 how many days in a leap year</p>
+              <p>Q1. How many days in a Leap Year?</p>
               <h5>
                 {" "}
-                <button>56</button>
+                <button>356</button>
               </h5>
               <h5>
                 {" "}
-                <button>56</button>
+                <button>365</button>
               </h5>
               <h5>
                 {" "}
-                <button>56</button>
+                <button>366</button>
               </h5>
               <h5>
                 {" "}
-                <button>56</button>
+                <button>346</button>
               </h5>
             </div>
             <div class="main-test-card-lower">
               <h4>
-                <button>pre</button>
+                <button>Previous</button>
               </h4>
               <h4>
-                <button>next</button>
+                <button>Next</button>
               </h4>
             </div>
           </div>
