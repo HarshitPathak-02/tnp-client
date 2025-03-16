@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Forms.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../context/UserContext";
 
 const SigninForm = () => {
   const Navigate = useNavigate();
+
+  const {setUser} = useContext(UserContext)
 
   const [formdata, setFormdata] = useState({
     username: "",
@@ -30,7 +33,10 @@ const SigninForm = () => {
         password: formdata.password,
       }).then((response)=>{
         if (response.data.msg === "done") {
+          setUser(response.data.user)
           Navigate("/");
+          // console.log("signed in");
+          // console.log(response.data.user);
         }
       }).catch((err)=>{
         if(err.response.data==='Unauthorized'){
