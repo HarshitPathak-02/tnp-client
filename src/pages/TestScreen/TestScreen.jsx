@@ -11,10 +11,14 @@ const TestScreen = () => {
     question: "",
     options: [],
   });
+  const [correctAnswers, setCorrectAnswers] = useState([]);
 
   const { company, testName } = useParams();
 
-  const {user} = useContext(UserContext)
+  const { user } = useContext(UserContext);
+
+  const [userAnswers, setUserAnswers] = useState([])
+  const [userAnswer, setUserAnswer] = useState("");
 
   const getData = async () => {
     try {
@@ -33,6 +37,16 @@ const TestScreen = () => {
     }
   };
 
+  const setCorrectAnswersArray = () => {
+    testData.forEach((item) => {
+      console.log("items", item.correct_option);
+    });
+  };
+
+  useEffect(() => {
+    setCorrectAnswersArray();
+  }, [testData]);
+
   useEffect(() => {
     getData();
   }, []);
@@ -44,8 +58,15 @@ const TestScreen = () => {
   }, [iterator, testData]);
 
   const handleNextClick = () => {
-    if (iterator < testData.length - 1) {
-      setIterator((prev) => prev + 1);
+    if (userAnswer !== "") {
+      if (iterator < testData.length - 1) {
+        setIterator((prev) => prev + 1);
+      }
+      setUserAnswers([...userAnswers, userAnswer]); // Store current answer before moving to next
+      setUserAnswer(""); // Reset userAnswer for next question
+      console.log(userAnswers);
+    } else {
+      alert("Please select an answer before proceeding.");
     }
   };
 
@@ -55,10 +76,21 @@ const TestScreen = () => {
     }
   };
 
-  const handleSubmit = async (comp,tstName) => {
+  // Function to calculate score
+  const calculateScore = () => {
+    let score = 0;
+    testQuestions.forEach((question, index) => {
+      if (userAnswers[index] === correctAnswers[index]) {
+        score += 20; // Each correct answer = 20 marks
+      }
+    });
+    return score;
+  };
+
+  const handleSubmit = async (comp, tstName) => {
     try {
       // Get current date and time
-      console.log("user enrollment",user.enrollment);
+      console.log("user enrollment", user.enrollment);
       const now = new Date();
       const currentDate = now.toISOString(); // Stores full date in ISO format
       const currentTime = now.toLocaleTimeString("en-US", {
@@ -70,9 +102,9 @@ const TestScreen = () => {
       // Send the result to the backend
       const response = await axios.post("http://localhost:8000/test/submit", {
         enrollment: user.enrollment,
-        marks:54,
-        company:comp,
-        testName:tstName,
+        marks: 54,
+        company: comp,
+        testName: tstName,
         date: currentDate, // Send date in ISO format
         time: currentTime, // Send time in "HH:MM AM/PM" format
       });
@@ -91,25 +123,48 @@ const TestScreen = () => {
         <form id="TCS Question" onSubmit={(e) => e.preventDefault()}>
           <div className="main-test-card-mid">
             <h3>{showTestData.question}</h3>
-            {/* <h3>Q1. How many days are there in a leap year?</h3> */}
             <label className="option">
-              {/* <input type="radio" name="q2" value="356" /> 356 */}
-              <input type="radio" name="q2" value="356" />{" "}
+              <input
+                type="radio"
+                name="q"
+                value={showTestData.options[0]}
+                onChange={(e) => {
+                  setUserAnswer(e.target.value);
+                }}
+              />
               {showTestData.options[0]}
             </label>
             <label className="option">
-              {/* <input type="radio" name="q2" value="456" /> 456 */}
-              <input type="radio" name="q2" value="456" />{" "}
+              <input
+                type="radio"
+                name="q"
+                value={showTestData.options[1]}
+                onChange={(e) => {
+                  setUserAnswer(e.target.value);
+                }}
+              />
               {showTestData.options[1]}
             </label>
             <label className="option">
-              {/* <input type="radio" name="q2" value="366" /> 366 */}
-              <input type="radio" name="q2" value="366" />{" "}
+              <input
+                type="radio"
+                name="q"
+                value={showTestData.options[2]}
+                onChange={(e) => {
+                  setUserAnswer(e.target.value);
+                }}
+              />
               {showTestData.options[2]}
             </label>
             <label className="option">
-              {/* <input type="radio" name="q2" value="466" /> 466 */}
-              <input type="radio" name="q2" value="466" />{" "}
+              <input
+                type="radio"
+                name="q"
+                value={showTestData.options[3]}
+                onChange={(e) => {
+                  setUserAnswer(e.target.value);
+                }}
+              />
               {showTestData.options[3]}
             </label>
           </div>
@@ -122,7 +177,9 @@ const TestScreen = () => {
           </h4>
           <h4>
             {iterator >= testData.length - 1 ? (
-              <button onClick={()=>handleSubmit(company,testName)}>Submit</button>
+              <button onClick={() => handleSubmit(company, testName)}>
+                Submit
+              </button>
             ) : (
               <button
                 disabled={iterator >= testData.length - 1}

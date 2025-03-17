@@ -3,7 +3,7 @@ import "./Header.css";
 
 import axios from "axios";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import DemoLogo from "../../assets/images/demo-logo.webp";
 import { UserContext } from "../../context/UserContext";
@@ -11,12 +11,15 @@ import { UserContext } from "../../context/UserContext";
 const Header = () => {
   const {user,setUser} = useContext(UserContext)
 
+  const navigate = useNavigate()
+
   const handleLogout = async ()=>{
     try {
       await axios.get("http://localhost:8000/logout")
       .then((response)=>{
         if(response.data.msg==="loggedOut"){
           setUser(null)
+          navigate("/")
         }
       }).catch((err)=>{
         console.log(err);
