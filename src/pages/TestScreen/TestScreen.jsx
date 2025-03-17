@@ -92,7 +92,7 @@ const TestScreen = () => {
       // Get current date and time
       console.log("user enrollment", user.enrollment);
       const now = new Date();
-      const currentDate = now.toISOString(); // Stores full date in ISO format
+      const currentDate = now.toISOString().split("T")[0] ; // Stores full date in ISO format
       const currentTime = now.toLocaleTimeString("en-US", {
         hour: "2-digit",
         minute: "2-digit",
@@ -101,7 +101,7 @@ const TestScreen = () => {
 
       // Send the result to the backend
       const response = await axios.post("http://localhost:8000/test/submit", {
-        enrollment: user.enrollment,
+        username: user.username,
         marks: 54,
         company: comp,
         testName: tstName,
