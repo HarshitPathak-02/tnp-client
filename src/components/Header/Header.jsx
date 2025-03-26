@@ -49,7 +49,7 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link className="navbar-lnk" to="https://uitshivpuri.rgpv.ac.in/">
+            <Link className="navbar-lnk" to="https://uitshivpuri.rgpv.ac.in/" target="_blank">
               UIT RGPV Shivpuri
             </Link>
           </li>
