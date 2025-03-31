@@ -42,23 +42,32 @@ const Tests = () => {
       <div className="tests-main-down">
         {company==="" && 
           <div className="tests-main-down-up">
-            <Card image={AptImage} type="company-card"/>
-            <Card image={ReaImage} type="company-card"/>
-            <Card image={CodeImage} type="company-card"/>
+            <div className="tests-main-down-up-land">
+              <div className="tests-main-down-up-top">
+                <Card title="TCS Aptitude Assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60" type="test-card" path="/tests/tcs/TCS Aptitude"/>
+                <Card title="TCS Reasoning Assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60" type="test-card" path="/tests/tcs/TCS Reasoning"/>
+                <Card title="TCS Coding Assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60" type="test-card" path="/tests/tcs/TCS Coding"/>
+              </div>
+              <div className="tests-main-down-up-down">
+                <Card title="Infosys Aptitude Assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60" type="test-card" path="/tests/infosys/Infosys Aptitude"/>
+                <Card title="Infosys Reasoning Assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60" type="test-card" path="/tests/infosys/Infosys Reasoning"/>
+                <Card title="Infosys Coding Assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60" type="test-card" path="/tests/infosys/Infosys Coding"/>
+              </div>
+            </div>
           </div>
         }
         {company==="TCS" && 
           <div className="tests-main-down-up">
-            <Card title="TCS Aptitude Assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60" type="test-card" path="/tests/tcs/tcs-aptitude"/>
-            <Card title="TCS Reasoning Assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60" type="test-card" path="/tests/tcs/tcs-reasoning"/>
-            <Card title="TCS Coding Assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60" type="test-card" path="/tests/tcs/tcs-coding"/>
+            <Card title="TCS Aptitude Assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60" type="test-card" path="/tests/tcs/TCS Aptitude"/>
+            <Card title="TCS Reasoning Assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60" type="test-card" path="/tests/tcs/TCS Reasoning"/>
+            <Card title="TCS Coding Assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60" type="test-card" path="/tests/tcs/TCS Coding"/>
           </div>
         }
         {company==="Infosys" && 
           <div className="tests-main-down-up">
-            <Card title="Infosys Aptitude Assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60" type="test-card" path="/tests/infosys/infosys-aptitude"/>
-            <Card title="Infosys Reasoning Assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60" type="test-card" path="/tests/infosys/infosys-reasoning"/>
-            <Card title="Infosys Coding Assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60" type="test-card" path="/tests/infosys/infosys-coding"/>
+            <Card title="Infosys Aptitude Assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60" type="test-card" path="/tests/infosys/Infosys Aptitude"/>
+            <Card title="Infosys Reasoning Assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60" type="test-card" path="/tests/infosys/Infosys Reasoning"/>
+            <Card title="Infosys Coding Assessment" description="Check your ability by attempting aptitude , interview and coding questions." time="60 min" marks="120" questions="60" type="test-card" path="/tests/infosys/Infosys Coding"/>
           </div>
         }
       </div>

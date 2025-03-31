@@ -38,3 +38,12 @@
     gap:3rem;
 }
     
+.tests-main-down-up-land {
+    display: flex;
+    flex-direction: column;
+}
+
+.tests-main-down-up-top, .tests-main-down-up-down {
+    display: flex;
+    gap: 3rem;
+}
