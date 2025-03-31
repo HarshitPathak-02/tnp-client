@@ -3,6 +3,7 @@ import "./Forms.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
+import SigninImage from "../../assets/images/sigin-image.jpg"
 
 const SigninForm = () => {
   const Navigate = useNavigate();
@@ -51,7 +52,12 @@ const SigninForm = () => {
   };
 
   return (
-    <div className="signup-form">
+    <div className="signin-form">
+      <div className="signinforminside">
+      <div className="signinforminside-left">
+        <img src={SigninImage} alt="" />
+      </div>
+      <div className="signinforminside-right">
       <form className="row g-3" onSubmit={submitHandler}>
         <div className="col-md-12">
           <label htmlFor="validationDefault02" className="form-label">
@@ -87,6 +93,8 @@ const SigninForm = () => {
           </button>
         </div>
       </form>
+      </div>
+      </div>
     </div>
   );
 };

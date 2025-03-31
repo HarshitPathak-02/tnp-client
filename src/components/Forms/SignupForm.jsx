@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Forms.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import signupFormImage from "../../assets/images/signup-image.jpg"
 
 const SignupForm = () => {
 
@@ -59,6 +60,12 @@ const SignupForm = () => {
 
   return (
     <div className="signup-form">
+      <div className="signupforminside">
+      <div className="signupforminside-left">
+      <img src={signupFormImage} alt="" />
+      </div>
+      <div className="signupforminside-right">
+
       <form className="row g-3" onSubmit={submitHandler}>
         <div className="col-md-6">
           <label htmlFor="validationDefault01" className="form-label">
@@ -178,6 +185,8 @@ const SignupForm = () => {
           </button>
         </div>
       </form>
+      </div>
+    </div>
     </div>
   );
 };
