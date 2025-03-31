@@ -3,7 +3,7 @@ import React from "react";
 import rgpvLogo from "../../assets/images/RGPVLOGO.jpeg";
 import demo from "../../assets/images/Landscape-Color.jpg";
 import tcs from "../../assets/images/tcs.png";
-import infosys from "../../assets/images/infosys.png";
+import infosys from "../../assets/images/Infosys.png";
 import kanwat from "../../assets/images/kanwat.png";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
