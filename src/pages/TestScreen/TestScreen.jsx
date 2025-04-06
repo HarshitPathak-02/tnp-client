@@ -65,9 +65,9 @@ const TestScreen = () => {
     if (userAnswer !== "") {
       setUserAnswers((prevAnswers) => {
         const updatedAnswers = [...prevAnswers];
-        console.log("it1",iterator);
+        console.log("it1", iterator);
         updatedAnswers[iterator] = userAnswer;
-        console.log("it2",iterator); // Store answer in correct index
+        console.log("it2", iterator); // Store answer in correct index
         return updatedAnswers;
       });
 
@@ -95,10 +95,10 @@ const TestScreen = () => {
 
   // Function to calculate score
   const calculateScore = () => {
-    let score = 0
+    let score = 0;
     userAnswers.forEach((answer, index) => {
       if (answer && correctAnswers[index] && answer === correctAnswers[index]) {
-        score+=20; // Assuming each correct answer is worth 20 marks
+        score += 20; // Assuming each correct answer is worth 20 marks
       }
     });
     setScore(score);
@@ -144,7 +144,7 @@ const TestScreen = () => {
 
       // console.log("Test result submitted:", response.data);
 
-      setIsModalOpen(true)
+      setIsModalOpen(true);
     } catch (error) {
       console.error("Error submitting test:", error);
       alert("Failed to submit test.");
@@ -153,54 +153,82 @@ const TestScreen = () => {
 
   return (
     <div className="test-screen">
-      <div className="main-test-card">
-        <form id="TCS Question" onSubmit={(e) => e.preventDefault()}>
-          <div className="main-test-card-mid">
-            <h3>{showTestData.question}</h3>
-            {showTestData.options.map((option, index) => (
-              <label key={index} className="option">
-                <input
-                  type="radio"
-                  name="q"
-                  value={option}
-                  checked={userAnswer === option}
-                  onChange={(e) => {
-                    setUserAnswer(e.target.value)
-                    e.target.value = ""
-                  }}
-                />
-                {option}
-              </label>
-            ))}
+      <div className="test-screen-question">
+        <div className="main-test-card">
+          <form id="TCS Question" onSubmit={(e) => e.preventDefault()}>
+            <div className="main-test-card-mid">
+              <h3>{showTestData.question}</h3>
+              {showTestData.options.map((option, index) => (
+                <label key={index} className="option">
+                  <input
+                    type="radio"
+                    name="q"
+                    value={option}
+                    checked={userAnswer === option}
+                    onChange={(e) => {
+                      setUserAnswer(e.target.value);
+                      e.target.value = "";
+                    }}
+                  />
+                  {option}
+                </label>
+              ))}
+            </div>
+          </form>
+          <div className="main-test-card-lower">
+            <h4>
+              <button disabled={iterator === 0} onClick={handlePrevClick}>
+                Previous
+              </button>
+            </h4>
+            <h4>
+              {iterator >= testData.length - 1 ? (
+                <button onClick={() => handleSubmit(company, testName)}>
+                  Submit
+                </button>
+              ) : (
+                <button
+                  disabled={iterator >= testData.length - 1}
+                  onClick={handleNextClick}
+                >
+                  Next
+                </button>
+              )}
+            </h4>
           </div>
-        </form>
-        <div className="main-test-card-lower">
-          <h4>
-            <button disabled={iterator === 0} onClick={handlePrevClick}>
-              Previous
-            </button>
-          </h4>
-          <h4>
-            {iterator >= testData.length - 1 ? (
-              <button onClick={() => handleSubmit(company, testName)}>
-                Submit
-              </button>
-            ) : (
-              <button
-                disabled={iterator >= testData.length - 1}
-                onClick={handleNextClick}
-              >
-                Next
-              </button>
-            )}
-          </h4>
         </div>
       </div>
+      <div className="test-screen-metrics">
+        <div className="test-screen-metrics-heading">
+          <h2>Test Name</h2>
+        </div>
+        <div className="test-screen-metrics-data">
+          <div className="test-screen-metrics-time-total">
+            <p><b>Total Time</b></p>
+            <p>60:00</p>
+          </div>
+          <div className="test-screen-metrics-time-remaining">
+            <p><b>Remaining Time</b></p>
+            <p>26:25</p>
+          </div>
+          <div className="test-screen-metrics-questions-total">
+            <p><b>Total Questions</b></p>
+            <p>10</p>
+          </div>
+          <div className="test-screen-metrics-questions-attempted">
+            <p><b>Attempted Questions</b></p>
+            <p>5</p>
+          </div>
+        </div>
+      </div>
+
       <Modal show={isModal} onHide={() => setIsModalOpen(false)} centered>
         <Modal.Header closeButton>
           <Modal.Title>Test Submitted</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Your test has been successfully submitted. You got {score}</Modal.Body>
+        <Modal.Body>
+          Your test has been successfully submitted. You got {score}
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setIsModalOpen(false)}>
             Close

@@ -1,9 +1,8 @@
 .main-test-card {
   display: flex;
   flex-direction: column;
-  border: 2px solid black;
-  padding: 0.5rem;
-  background: white;
+  padding: 1rem;
+  background-color: wheat;
 }
 
 h3 {
@@ -60,6 +59,30 @@ h3 {
   border-top-left-radius: 8px;
   background-color: #cedcf4;
 }
-/* button:hover{
-    background-color: azure;
-} */
+
+
+.test-screen {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.test-screen-question {
+  width: 70%;
+}
+
+.test-screen-metrics {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.test-screen-metrics-data {
+  display: grid;
+  grid-template-columns: 10rem 10.03rem;
+  grid-template-rows: 7rem 7rem;
+}
