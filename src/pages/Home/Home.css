@@ -58,7 +58,6 @@
 
 .carousel-item img {
     height: 30rem;
-    /* border-radius: 1rem; */
     width: 100%;
 }
 
@@ -73,11 +72,32 @@
     /* padding: 2rem; */
 }
 
+.home-students-inner-box {
+    margin-bottom: 5rem;
+}
+
 .home-companies-inner-box, .home-students-inner-box {
     display: flex;
+    height: 100%;
     gap: 2rem;
 }
 
 .home-companies-box-heading h2, .home-students-box-heading h2 {
     font-size: 3.5rem;
+}
+
+.home-students-box-heading {
+    margin-bottom: 1rem;
+}
+
+.card-swiper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-container {
+    width: 85%;
 }

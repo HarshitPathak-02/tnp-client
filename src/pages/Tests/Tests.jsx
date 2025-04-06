@@ -2,10 +2,6 @@ import React, { useState } from "react";
 import "./Tests.css";
 import Card from "../../components/Card/Card";
 
-import AptImage from "../../assets/images/aptitude.webp"
-import ReaImage from "../../assets/images/reasoning.jpg"
-import CodeImage from "../../assets/images/coding.png"
-
 const Tests = () => {
 
   const [company, setCompany] = useState("");
