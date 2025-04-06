@@ -13,41 +13,70 @@
     border-radius: 1rem;
 }
 
-.test-card-main{
-    height: 300px;
-    width:300px;
+.test-card {
+    box-shadow: 0rem 0.7rem 1rem 0.5rem gray;
 }
-.card-body h5{
-    display: flex;
-    margin-bottom: 1rem;
+
+.test-card:hover {
+    box-shadow: 0rem 0.7rem 1rem 1rem gray;
 }
+
 .card-body a {
     gap: 2rem;
     height: 35px;
 }
+
 .test-card-charc{
     display: flex;
     flex-direction: row;
     gap:2rem;
 }
 
+.student-img {
+    z-index: 99;
+}
+
+#student-img {
+    width: 12rem;
+    height: 12rem;
+    border-radius: 50%;
+    margin-bottom: -7rem;
+    border: 0.3rem solid #5ce2e7;
+}
+
 .student-card {
     width: 18rem;
-    height:20rem;
+    height:25rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     padding: 1rem;
-    background-color: #fafbfd;
     border-radius: 1rem;
 
 }
 
-.student-card-desc {
+.student-card-desc-info {
     display: flex;
     flex-direction: column;
-    align-self: flex-start;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8rem;
+}
+
+.student-card-desc {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    border-top: #5ce2e7 solid 0.7rem;
+    border-top-left-radius: 5rem;
+    border-top-right-radius: 5rem;
+    border-right: 2px solid #5ce2e7;
+    border-left: 2px solid #5ce2e7;
+    align-items: center;
+    color: white;
+    background-color: #004e70;
 }
 
 .student-card img {

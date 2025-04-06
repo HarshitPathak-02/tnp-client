@@ -19,6 +19,7 @@
 .signupforminside-right{
     display: flex;
     width: 50%;
+
     color: white;
     
 }
@@ -52,4 +53,10 @@
 }
 .signinforminside-left img{
     border-radius: 16px;
+
+}
+
+.signup-form form {
+    width: 50%;
+
 }

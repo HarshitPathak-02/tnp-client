@@ -3,7 +3,7 @@ import React from "react";
 import rgpvLogo from "../../assets/images/RGPVLOGO.jpeg";
 import demo from "../../assets/images/Landscape-Color.jpg";
 import tcs from "../../assets/images/tcs.png";
-import infosys from "../../assets/images/infosys.png";
+import infosys from "../../assets/images/Infosys.png";
 import kanwat from "../../assets/images/kanwat.png";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -19,6 +19,14 @@ import { Link } from "react-router-dom";
 
 import "./Home.css";
 import Card from "../../components/Card/Card";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import "swiper/css";
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 const Home = () => {
   return (
@@ -148,17 +156,44 @@ const Home = () => {
         <div className="home-companies-box-heading">
           <h2>Our Beloved Companies...</h2>
         </div>
-        <div className="home-companies-inner-box">
-          <Card image={tcs} type="company-card"/>
-          <Card image={kanwat} type="company-card"/>
-          <Card image={infosys} type="company-card"/>
-          <Card image={tcs} type="company-card"/>
-        </div>
-        <div className="home-companies-inner-box">
-          <Card image={kanwat} type="company-card"/>
-          <Card image={infosys} type="company-card"/>
-          <Card image={tcs} type="company-card"/>
-          <Card image={kanwat} type="company-card"/>
+        <div className="card-swiper">
+          <Swiper
+            className="swiper-container"
+            modules={[Navigation, Pagination, Scrollbar, A11y]}
+            spaceBetween={10}
+            slidesPerView={4}
+            navigation
+            loop
+            pagination={{ clickable: true }}
+            // scrollbar={{ draggable: true }}
+            onSwiper={(swiper) => console.log(swiper)}
+            onSlideChange={() => console.log("slide change")}
+          >
+            <SwiperSlide>
+              <Card image={tcs} type="company-card" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Card image={kanwat} type="company-card" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Card image={infosys} type="company-card" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Card image={kanwat} type="company-card" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Card image={tcs} type="company-card" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Card image={infosys} type="company-card" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Card image={tcs} type="company-card" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Card image={kanwat} type="company-card" />
+            </SwiperSlide>
+          </Swiper>
         </div>
       </div>
       <div className="home-students-box">
@@ -166,16 +201,64 @@ const Home = () => {
           <h2>Our Placed Students...</h2>
         </div>
         <div className="home-students-inner-box">
-          <Card image={tcs} type="student-card" studentName="Raju" studentCompany="TCS" studentPackage="4 Lakhs Per Annum"/>
-          <Card image={kanwat} type="student-card" studentName="Raju" studentCompany="TCS" studentPackage="4 Lakhs Per Annum"/>
-          <Card image={infosys} type="student-card" studentName="Raju" studentCompany="TCS" studentPackage="4 Lakhs Per Annum"/>
-          <Card image={tcs} type="student-card" studentName="Raju" studentCompany="TCS" studentPackage="4 Lakhs Per Annum"/>
+          <Card
+            image={tcs}
+            type="student-card"
+            studentName="Raju"
+            studentCompany="TCS"
+            studentPackage="4 Lakhs Per Annum"
+          />
+          <Card
+            image={kanwat}
+            type="student-card"
+            studentName="Raju"
+            studentCompany="TCS"
+            studentPackage="4 Lakhs Per Annum"
+          />
+          <Card
+            image={infosys}
+            type="student-card"
+            studentName="Raju"
+            studentCompany="TCS"
+            studentPackage="4 Lakhs Per Annum"
+          />
+          <Card
+            image={tcs}
+            type="student-card"
+            studentName="Raju"
+            studentCompany="TCS"
+            studentPackage="4 Lakhs Per Annum"
+          />
         </div>
         <div className="home-students-inner-box">
-          <Card image={kanwat} type="student-card" studentName="Raju" studentCompany="TCS" studentPackage="4 Lakhs Per Annum"/>
-          <Card image={infosys} type="student-card" studentName="Raju" studentCompany="TCS" studentPackage="4 Lakhs Per Annum"/>
-          <Card image={tcs} type="student-card" studentName="Raju" studentCompany="TCS" studentPackage="4 Lakhs Per Annum"/>
-          <Card image={kanwat} type="student-card" studentName="Raju" studentCompany="TCS" studentPackage="4 Lakhs Per Annum"/>
+          <Card
+            image={kanwat}
+            type="student-card"
+            studentName="Raju"
+            studentCompany="TCS"
+            studentPackage="4 Lakhs Per Annum"
+          />
+          <Card
+            image={infosys}
+            type="student-card"
+            studentName="Raju"
+            studentCompany="TCS"
+            studentPackage="4 Lakhs Per Annum"
+          />
+          <Card
+            image={tcs}
+            type="student-card"
+            studentName="Raju"
+            studentCompany="TCS"
+            studentPackage="4 Lakhs Per Annum"
+          />
+          <Card
+            image={kanwat}
+            type="student-card"
+            studentName="Raju"
+            studentCompany="TCS"
+            studentPackage="4 Lakhs Per Annum"
+          />
         </div>
       </div>
     </div>

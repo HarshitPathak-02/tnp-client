@@ -38,13 +38,27 @@ const Card = (props) => {
       )}
       {props.type === "student-card" && (
         <div className="student-card">
-          <img src={props.image} alt="" className="box-img" />
+          <div className="student-img">
+            <img src={props.image} alt="" id="student-img" />
+          </div>
           <div className="student-card-desc">
-            <h4>{props.studentName}</h4>
-            <h5>{props.studentCompany}</h5>
-            <h6>{props.studentPackage}</h6>
+            <div className="student-card-desc-info">
+              <h4>{props.studentName}</h4>
+              <h5>{props.studentCompany}</h5>
+              <h6>{props.studentPackage}</h6>
+            </div>
           </div>
         </div>
+        // <div className="student-card">
+        //   <div className="student-img">
+        //     <img src={props.image} alt="" className="box-img" />
+        //   </div>
+        //   <div className="student-card-desc">
+        //     <h4>{props.studentName}</h4>
+        //     <h5>{props.studentCompany}</h5>
+        //     <h6>{props.studentPackage}</h6>
+        //   </div>
+        // </div>
       )}
     </div>
   );
