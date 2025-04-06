@@ -1,4 +1,5 @@
 .signup-form {
+    display: flex;
     height: 100vh;
     width: 100%;
     display: flex;
@@ -6,10 +7,56 @@
     align-items: center;
 }
 
-.signup-form form {
+
+.signupforminside{
+    display: flex;
+    width: 80%;
+    gap: 2rem;
+    padding: 2rem;
+    background-color: black;
+    border-radius: 16px;
+}
+.signupforminside-right{
+    display: flex;
     width: 50%;
+
+    color: white;
+    
+}
+.signupforminside-left{
+    display: flex;
+    width: 50%;
+}
+ .signupforminside-left img{
+    height: 100%;
+    width: 100%; 
+} 
+.signinforminside{
+    display: flex;
+    width: 80%;
+    gap: 2rem;
+    padding: 1rem;
+    /* background-color: black; */
+    border-radius: 16px;
+    background-color: antiquewhite;
+
+}
+.signinforminside-right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.signin-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.signinforminside-left img{
+    border-radius: 16px;
+
 }
 
 .signup-form form {
     width: 50%;
+
 }
