@@ -75,7 +75,7 @@ const Footer = () => {
           </div>
           <div className="mainfooter-lower-left">
             <h5>
-              <i className="fa-solid fa-copyright"></i> HaNaKoRa 2025
+              <i className="fa-solid fa-copyright"></i> Quintellect 2025
             </h5>
           </div>
         </div>

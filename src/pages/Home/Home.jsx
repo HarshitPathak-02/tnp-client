@@ -1,10 +1,13 @@
 import React from "react";
 
 import rgpvLogo from "../../assets/images/RGPVLOGO.jpeg";
-import demo from "../../assets/images/Landscape-Color.jpg";
+import demo1 from "../../assets/images/slide2.jpg";
+import demo2 from "../../assets/images/slide4.jpg";
+import demo3 from "../../assets/images/slide6.jpg";
 import tcs from "../../assets/images/tcs.png";
 import infosys from "../../assets/images/Infosys.png";
 import kanwat from "../../assets/images/kanwat.png";
+import person from "../../assets/images/person.jpg";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -117,13 +120,13 @@ const Home = () => {
           </div>
           <div className="carousel-inner">
             <div className="carousel-item active">
-              <img src={demo} className="carousel-img" alt="..." />
+              <img src={demo1} className="carousel-img" alt="..." />
             </div>
             <div className="carousel-item">
-              <img src={demo} className="carousel-img" alt="..." />
+              <img src={demo2} className="carousel-img" alt="..." />
             </div>
             <div className="carousel-item">
-              <img src={demo} className="carousel-img" alt="..." />
+              <img src={demo3} className="carousel-img" alt="..." />
             </div>
           </div>
           <button
@@ -202,60 +205,60 @@ const Home = () => {
         </div>
         <div className="home-students-inner-box">
           <Card
-            image={tcs}
+            image={person}
             type="student-card"
-            studentName="Raju"
+            studentName="Rajesh Kumar"
             studentCompany="TCS"
             studentPackage="4 Lakhs Per Annum"
           />
           <Card
-            image={kanwat}
+            image={person}
             type="student-card"
-            studentName="Raju"
+            studentName="Sumitra Singh"
             studentCompany="TCS"
             studentPackage="4 Lakhs Per Annum"
           />
           <Card
-            image={infosys}
+            image={person}
             type="student-card"
-            studentName="Raju"
+            studentName="Rashi Jain"
             studentCompany="TCS"
-            studentPackage="4 Lakhs Per Annum"
+            studentPackage="7 Lakhs Per Annum"
           />
           <Card
-            image={tcs}
+            image={person}
             type="student-card"
-            studentName="Raju"
-            studentCompany="TCS"
-            studentPackage="4 Lakhs Per Annum"
+            studentName="Akash Mishra"
+            studentCompany="Infosys"
+            studentPackage="5 Lakhs Per Annum"
           />
         </div>
         <div className="home-students-inner-box">
           <Card
-            image={kanwat}
+            image={person}
             type="student-card"
-            studentName="Raju"
-            studentCompany="TCS"
-            studentPackage="4 Lakhs Per Annum"
+            studentName="Rahul Kushwaha"
+            studentCompany="Yash Technologies"
+            studentPackage="4.5 Lakhs Per Annum"
           />
           <Card
-            image={infosys}
+            image={person}
             type="student-card"
-            studentName="Raju"
+            studentName="Vedant Sharma"
             studentCompany="TCS"
-            studentPackage="4 Lakhs Per Annum"
+            studentPackage="11 Lakhs Per Annum"
           />
           <Card
-            image={tcs}
+            image={person}
             type="student-card"
-            studentName="Raju"
-            studentCompany="TCS"
-            studentPackage="4 Lakhs Per Annum"
+            studentName="Devaswa Mishra"
+            studentCompany="Acmegrade"
+            studentPackage="7 Lakhs Per Annum"
           />
           <Card
-            image={kanwat}
+            image={person}
             type="student-card"
-            studentName="Raju"
+            studentName="Aditya Singh"
             studentCompany="TCS"
             studentPackage="4 Lakhs Per Annum"
           />

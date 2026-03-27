@@ -46,7 +46,7 @@
 
 .student-card {
     width: 18rem;
-    height:25rem;
+    height:24rem;
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
