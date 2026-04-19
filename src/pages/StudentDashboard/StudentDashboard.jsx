@@ -1,119 +1,22 @@
-// import React, { useContext, useState, useEffect } from "react";
-// import "./StudentDashboard.css";
-// import { UserContext } from "../../context/UserContext";
-
-// import axios from "axios";
-
-// const StudentDashboard = () => {
-//   const { user } = useContext(UserContext);
-//   const [testData, setTestData] = useState([]);
-
-//   const getTestHistory = async () => {
-//     await axios
-//       .get(`http://localhost:8000/test-history/?username=${user.username}`)
-//       .then((response) => {
-//         console.log(response.data.data);
-//         setTestData(response.data.data);
-//       });
-//   };
-
-//   useEffect(() => {
-//     getTestHistory();
-//   }, []);
-
-//   return (
-//     <div className="student-dashboard-main">
-//       <div className="student-dashboard-main-up">
-//         <div className="student-dashboard-main-up-left">
-//           <img src="card1.jpg" alt="profile_pic" className="profile-pic" />
-//           <div className="student-dashboard-main-up-right">
-//             <h2>{user.fullname}</h2>
-//             {/* <h2>bdisbds</h2> */}
-//             <div className="student-dashboard-main-up-down-right">
-//               <p>
-//                 <strong>Enrollment No</strong> <br />
-//                 {user.enrollment}
-//                 {/* dbakjdsac */}
-//               </p>
-//               <p>
-//                 <strong>Branch</strong>
-//                 <br />
-//                 {user.branch}
-//                 {/* vhgcjhb */}
-//               </p>
-//               <p>
-//                 <strong>College</strong> <br />
-//                 {user.college}
-//                 {/* nvcfugtvh */}
-//               </p>
-//               <p>
-//                 <strong>Email</strong>
-//                 <br />
-//                 {user.email}
-//                 {/* gfdryf */}
-//               </p>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//       <div className="student-dashboard-main-mid">
-//         <div className="student-dashboard-main-mid-card">
-//           <div className="student-dashboard-main-mid-card-left">
-//             <h2>Total Test</h2>
-//             <p>
-//               {testData.length}
-//             </p>
-//           </div>
-//           <div className="student-dashboard-main-mid-card-right">
-//             <h4>
-//               <i class="fa-solid fa-book-open-reader"></i>
-//             </h4>
-//           </div>
-//         </div>
-//       </div>
-//       <div className="student-dashboard-main-down">
-//         <div className="student-dashboard-main-down-up">
-//           <h2>Test History</h2>
-//         </div>
-//         <div className="student-dashboard-main-down-lower">
-//           <table>
-//             <tr>
-//               <th>Test</th>
-//               <th>Campany</th>
-//               <th>Marks Obtained</th>
-//               <th>Date</th>
-//               <th>Time</th>
-//             </tr>
-//             {testData.map((item) => {
-//               return (
-//                 <tr>
-//                   <td>{item.test_name}</td>
-//                   <td>{item.company}</td>
-//                   <td>{item.marks}</td>
-//                   <td>{item.date.toString().split("T")[0]}</td>
-//                   <td>{item.time}</td>
-//                 </tr>
-//               );
-//             })}
-//           </table>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default StudentDashboard;
-
 import React, { useContext, useState, useEffect } from "react";
 import "./StudentDashboard.css";
 import { UserContext } from "../../context/UserContext";
 import axios from "axios";
-
-// ✅ charts
-import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
+import {
+  PieChart,
+  Pie,
+  Cell,
+  Tooltip,
+  Legend,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+} from "recharts";
 import { Link } from "react-router-dom";
 
-const StudentDashboard = () => {
+const Dashboard = () => {
   const { user } = useContext(UserContext);
   const [testData, setTestData] = useState([]);
   const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#A28CFF"];
@@ -212,137 +115,147 @@ const StudentDashboard = () => {
     return weakest.subject;
   };
 
+  // 📊 PERFORMANCE OVER TIME
+  const performanceData = testData
+    .map((item) => ({
+      date: new Date(item.date).toISOString().split("T")[0],
+      marks: Number(item.marks),
+    }))
+    .sort((a, b) => new Date(a.date) - new Date(b.date)); // sort by date
   return (
-    <div className="student-dashboard-main">
-      {/* 🔹 PROFILE SECTION */}
-      <div className="student-dashboard-main-up">
-        <div className="student-dashboard-main-up-left">
-          <img src="card1.jpg" alt="profile_pic" className="profile-pic" />
-          <div className="student-dashboard-main-up-right">
-            <h2>{user.fullname}</h2>
+    <div className="dashboard">
+      {/* MAIN */}
+      <div className="main-dashboard">
+        <h2 className="title">{user.fullname}</h2>
 
-            <div className="student-dashboard-main-up-down-right">
-              <p>
-                <strong>Enrollment No</strong> <br />
-                {user.enrollment}
-              </p>
-              <p>
-                <strong>Branch</strong>
-                <br />
-                {user.branch}
-              </p>
-              <p>
-                <strong>College</strong> <br />
-                {user.college}
-              </p>
-              <p>
-                <strong>Email</strong>
-                <br />
-                {user.email}
-              </p>
-            </div>
+        {/* CARDS */}
+        <div className="cards-dashboard">
+          <div className="card purple card-dashboard">
+            <h3 style={{ color: "white" }}>Enrollment</h3>
+            <h4>{user.enrollment}</h4>
+          </div>
+
+          <div className="card blue card-dashboard">
+            <h3 style={{ color: "white" }}>Branch</h3>
+            <h4>{user.branch}</h4>
+          </div>
+
+          <div className="card orange card-dashboard">
+            <h3 style={{ color: "white" }}>Email</h3>
+            <h4>{user.email}</h4>
+          </div>
+
+          <div className="card green card-dashboard">
+            <h3 style={{ color: "white" }}>College</h3>
+            <h4 style={{ color: "white" }}> {user.college}</h4>
           </div>
         </div>
-      </div>
 
-      {/* 🔹 STATS CARD */}
-      <div className="student-dashboard-main-mid">
-        <div className="student-dashboard-main-mid-card">
-          <div className="student-dashboard-main-mid-card-left">
-            <h2>Total Test</h2>
-            <p>{testData.length}</p>
+        {/* MIDDLE */}
+        <div className="middle-dashboard">
+          {/* BAR CHART PLACEHOLDER */}
+          <div className="chart-box">
+            <h3>All Exam Result</h3>
+            {performanceData.length > 0 ? (
+              <BarChart width={700} height={450} data={performanceData}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="date" />
+                <YAxis />
+                <Tooltip />
+                <Bar dataKey="marks" fill="#8884d8" />
+              </BarChart>
+            ) : (
+              <p>No performance data</p>
+            )}
           </div>
-          <div className="student-dashboard-main-mid-card-right">
-            <h4>
-              <i className="fa-solid fa-book-open-reader"></i>
-            </h4>
+
+          {/* DONUT */}
+          <div style={{ padding: "20px" }}>
+            <h2>📊 Overall Performance Analysis</h2>
+
+            {subjectData.length > 0 ? (
+              <>
+                {/* PIE CHART */}
+                <PieChart width={350} height={300}>
+                  <Pie
+                    data={subjectData}
+                    dataKey="avgMarks"
+                    nameKey="subject"
+                    outerRadius={100}
+                  >
+                    {subjectData.map((entry, index) => (
+                      <Cell
+                        key={`cell-${index}`}
+                        fill={COLORS[index % COLORS.length]}
+                      />
+                    ))}
+                  </Pie>
+                  <Tooltip />
+                  <Legend />
+                </PieChart>
+
+                {/* AI SUMMARY */}
+                <div
+                  style={{
+                    marginTop: "20px",
+                    padding: "15px",
+                    border: "1px solid #ddd",
+                    borderRadius: "10px",
+                  }}
+                >
+                  <h3>🤖 AI Insight</h3>
+                  <p>
+                    Your weakest subject is <b>{getWeakSubject()}</b>. <br />
+                    Focus more on this area to improve your overall performance.
+                  </p>
+                </div>
+              </>
+            ) : (
+              <p>No test data available for analysis</p>
+            )}
           </div>
         </div>
-      </div>
 
-      {/* 🔥 NEW: OVERALL ANALYSIS SECTION */}
-      <div style={{ padding: "20px" }}>
-        <h2>📊 Overall Performance Analysis</h2>
+        {/* TABLE + SIDE */}
+        <div className="bottom">
+          {/* TABLE */}
+          <div className="table-box">
+            <h3>Tests Performed</h3>
 
-        {subjectData.length > 0 ? (
-          <>
-            {/* PIE CHART */}
-            <PieChart width={350} height={300}>
-              <Pie
-                data={subjectData}
-                dataKey="avgMarks"
-                nameKey="subject"
-                outerRadius={100}
-              >
-                {subjectData.map((entry, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={COLORS[index % COLORS.length]}
-                  />
-                ))}
-              </Pie>
-              <Tooltip />
-              <Legend />
-            </PieChart>
+            <table className="table-dashboard">
+              <thead>
+                <tr>
+                  <th className="th-dashboard">Test</th>
+                  <th className="th-dashboard">Company</th>
+                  <th className="th-dashboard">Marks Obtained</th>
+                  <th className="th-dashboard">Date</th>
+                  <th className="th-dashboard">Time</th>
+                </tr>
+              </thead>
 
-            {/* AI SUMMARY */}
-            <div
-              style={{
-                marginTop: "20px",
-                padding: "15px",
-                border: "1px solid #ddd",
-                borderRadius: "10px",
-              }}
-            >
-              <h3>🤖 AI Insight</h3>
-              <p>
-                Your weakest subject is <b>{getWeakSubject()}</b>. <br />
-                Focus more on this area to improve your overall performance.
-              </p>
-            </div>
-          </>
-        ) : (
-          <p>No test data available for analysis</p>
-        )}
-      </div>
-
-      {/* 🔹 TEST HISTORY TABLE */}
-      <div className="student-dashboard-main-down">
-        <div className="student-dashboard-main-down-up">
-          <h2>Test History</h2>
-        </div>
-        <div className="student-dashboard-main-down-lower">
-          <table>
-            <thead>
-              <tr>
-                <th>Test</th>
-                <th>Company</th>
-                <th>Marks Obtained</th>
-                <th>Date</th>
-                <th>Time</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              {testData.map((item, index) => {
-                return (
-                  <Link to={`/test/${item._id}`} key={index} style={{ textDecoration: "none" }}>
-                    <tr>
-                      <td>{item.test_name}</td>
-                      <td>{item.company}</td>
-                      <td>{item.marks}</td>
-                      <td>{item.date.toString().split("T")[0]}</td>
-                      <td>{item.time}</td>
+              <tbody>
+                {testData.map((item, index) => {
+                  return (
+                    <tr key={index}>
+                      <td className="td-dashboard">
+                        <Link style={{textDecoration:'none', color:'black'}} to={`/test-analysis/${item._id}`} state={{test:item}}>{item.test_name}</Link>
+                      </td>
+                      <td className="td-dashboard">{item.company}</td>
+                      <td className="td-dashboard">{item.marks}</td>
+                      <td className="td-dashboard">
+                        {new Date(item.date).toISOString().split("T")[0]}
+                      </td>
+                      <td className="td-dashboard">{item.time}</td>
                     </tr>
-                  </Link>
-                );
-              })}
-            </tbody>
-          </table>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default StudentDashboard;
+export default Dashboard;

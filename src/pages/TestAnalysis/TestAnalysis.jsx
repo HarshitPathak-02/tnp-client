@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./TestAnalysis.css";
 
@@ -17,228 +17,190 @@ import {
 } from "recharts";
 
 const TestAnalysis = () => {
-  const { id } = useParams(); // test id from URL
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const test = location.state?.test; // 🔥 full test object from dashboard
+
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
+
   const COLORS = ["#00C49F", "#FF4C4C"];
 
-  // 🔹 Fetch test data
+  // 🔥 Fetch full test using ID
   useEffect(() => {
+    if (!test?._id) return;
+
     const fetchTest = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:8000/test-analysis/${id}`,
+          `http://localhost:8000/test-analysis/${test._id}`
         );
-        console.log("ressss:", res.data);
         setData(res.data.data);
-        setLoading(false);
       } catch (err) {
-        console.error("Error fetching test analysis:", err);
+        console.error(err);
+      } finally {
         setLoading(false);
       }
     };
 
     fetchTest();
-  }, [id]);
+  }, [test]);
 
+  if (!test) return <h2>No test data received</h2>;
   if (loading) return <h2>Loading analysis...</h2>;
   if (!data) return <h2>No data found</h2>;
 
-  // 🔥 ADD HERE
+  // 🔥 Parse AI
   let parsedAI = null;
-
   try {
     parsedAI = JSON.parse(data.aiAnalysis);
-  } catch (e) {
-    console.error("AI parse error", e);
+  } catch (e) {}
+
+  const isCoding = data.test_type === "coding";
+
+  // =========================
+  // MCQ ANALYSIS
+  // =========================
+  let total = 0;
+  let correct = 0;
+  let wrong = 0;
+  let accuracy = 0;
+  let accuracyData = [];
+
+  if (!isCoding && data.answers) {
+    total = data.answers.length;
+    correct = data.answers.filter(
+      (a) => a.selected === a.correct
+    ).length;
+    wrong = total - correct;
+    accuracy = total ? ((correct / total) * 100).toFixed(2) : 0;
+
+    accuracyData = [
+      { name: "Correct", value: correct },
+      { name: "Wrong", value: wrong },
+    ];
   }
-  console.log("Test Analysis Data:", data);
-  // ✅ Accuracy
-  const total = data.answers.length;
-  const correct = data.answers.filter(
-    (a) => a.selected === a.correct,
-  ).length;
-  const wrong = total - correct;
-  const accuracy = ((correct / total) * 100).toFixed(2);
 
-  // ✅ Pie data
-  const accuracyData = [
-    { name: "Correct", value: correct },
-    { name: "Wrong", value: wrong },
-  ];
+  // =========================
+  // CODING ANALYSIS
+  // =========================
+  let codingData = [];
+  let totalPassed = 0;
+  let totalTestCases = 0;
 
-  // ✅ Time per question
-  const timeData = data.answers.map((q, i) => ({
-    name: `Q${i + 1}`,
-    time: q.timeTaken,
-  }));
+  if (isCoding && data.codingAnswers) {
+    codingData = data.codingAnswers.map((q, i) => ({
+      name: `Q${i + 1}`,
+      passed: q.passed,
+      total: q.total,
+    }));
 
-  // ✅ Time distribution
-  const timeBuckets = {
-    "0-10s": 0,
-    "10-20s": 0,
-    "20-30s": 0,
-    "30s+": 0,
-  };
+    data.codingAnswers.forEach((q) => {
+      totalPassed += q.passed;
+      totalTestCases += q.total;
+    });
 
-  data.answers.forEach((q) => {
-    if (q.timeTaken <= 10) timeBuckets["0-10s"]++;
-    else if (q.timeTaken <= 20) timeBuckets["10-20s"]++;
-    else if (q.timeTaken <= 30) timeBuckets["20-30s"]++;
-    else timeBuckets["30s+"]++;
-  });
+    accuracy = totalTestCases
+      ? ((totalPassed / totalTestCases) * 100).toFixed(2)
+      : 0;
 
-  const timeDistributionData = Object.entries(timeBuckets).map(
-    ([range, count]) => ({
-      range,
-      count,
-    }),
-  );
+    accuracyData = [
+      { name: "Passed", value: totalPassed },
+      { name: "Failed", value: totalTestCases - totalPassed },
+    ];
+  }
 
   return (
     <div className="test-analysis-container">
-      {/* 🔹 HEADER */}
+      {/* HEADER */}
       <div className="test-analysis-header">
         <h1>{data.test_name} Analysis</h1>
-        <p>
-          <b>Company:</b> {data.company}
-        </p>
-        <p>
-          <b>Marks:</b> {data.marks}
-        </p>
+        <p><b>Company:</b> {data.company}</p>
+        <p><b>Marks:</b> {data.marks}</p>
+        <p><b>Type:</b> {data.test_type}</p>
       </div>
 
-      {/* 🔹 BASIC STATS */}
+      {/* 🔥 VIEW SOLUTIONS BUTTON */}
+      <div style={{ marginBottom: "20px" }}>
+        <button
+          onClick={() =>
+            navigate(`/tests/${data.company}/${data.test_name}`, {
+              state: {
+                isReviewMode: true,
+                resultId: data._id,
+                company: data.company,
+                testName: data.test_name,
+                testType: data.test_type,
+                mode:'solution'
+              },
+            })
+          }
+          style={{
+            padding: "10px 15px",
+            background: "#007bff",
+            color: "white",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+          }}
+        >
+          🔍 View Solutions
+        </button>
+      </div>
+
+      {/* STATS */}
       <div className="test-analysis-stats">
         <div className="stat-card">
           <h3>Total Questions</h3>
-          <p>{data.answers?.length}</p>
+          <p>{isCoding ? data.codingAnswers?.length : data.answers?.length}</p>
         </div>
 
         <div className="stat-card">
-          <h3>Correct Answers</h3>
-          <p>{data.answers?.filter((a) => a.selected === a.correct).length}</p>
+          <h3>{isCoding ? "Passed Cases" : "Correct Answers"}</h3>
+          <p>{isCoding ? totalPassed : correct}</p>
         </div>
 
         <div className="stat-card">
           <h3>Accuracy</h3>
-          <p>
-            {(
-              (data.answers?.filter((a) => a.selected === a.correct).length /
-                data.answers?.length) *
-              100
-            ).toFixed(2)}
-            %
-          </p>
+          <p>{accuracy}%</p>
         </div>
       </div>
 
-      <div style={{ display: "flex", gap: "40px", flexWrap: "wrap" }}>
-        {/* 🔹 Accuracy Pie */}
-        <div>
-          <h3>Accuracy</h3>
-          <PieChart width={300} height={250}>
-            <Pie data={accuracyData} dataKey="value" outerRadius={80} label>
-              {accuracyData.map((entry, index) => (
-                <Cell key={index} fill={COLORS[index]} />
-              ))}
-            </Pie>
-            <Tooltip />
-            <Legend />
-          </PieChart>
-        </div>
+      {/* PIE */}
+      <PieChart width={300} height={250}>
+        <Pie data={accuracyData} dataKey="value" outerRadius={80} label>
+          {accuracyData.map((entry, index) => (
+            <Cell key={index} fill={COLORS[index]} />
+          ))}
+        </Pie>
+        <Tooltip />
+        <Legend />
+      </PieChart>
 
-        {/* 🔹 Time Distribution */}
-        <div>
-          <h3>Time Distribution</h3>
-          <BarChart width={350} height={250} data={timeDistributionData}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="range" />
-            <YAxis />
-            <Tooltip />
-            <Bar dataKey="count" />
-          </BarChart>
-        </div>
-      </div>
-
-      <div style={{ marginTop: "30px" }}>
-        <h3>Time per Question</h3>
-
-        <BarChart width={600} height={300} data={timeData}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Bar dataKey="time" />
-        </BarChart>
-      </div>
-
-      {/* 🔹 RAW AI ANALYSIS (TEMP) */}
+      {/* AI */}
       <div className="ai-analysis-section">
         <h2>🤖 AI Analysis</h2>
 
         {parsedAI ? (
           <>
-            {/* Strengths */}
-            <div>
-              <h3>✅ Strengths</h3>
-              <ul>
-                {parsedAI.strengths.map((s, i) => (
-                  <li key={i}>{s}</li>
-                ))}
-              </ul>
-            </div>
+            <h3>✅ Strengths</h3>
+            <ul>{parsedAI.strengths.map((s, i) => <li key={i}>{s}</li>)}</ul>
 
-            {/* Weaknesses */}
-            <div>
-              <h3>⚠️ Weaknesses</h3>
-              <ul>
-                {parsedAI.weaknesses.map((w, i) => (
-                  <li key={i}>{w}</li>
-                ))}
-              </ul>
-            </div>
+            <h3>⚠️ Weaknesses</h3>
+            <ul>{parsedAI.weaknesses.map((w, i) => <li key={i}>{w}</li>)}</ul>
 
-            {/* Time Analysis */}
-            <div>
-              <h3>⏱️ Time Analysis</h3>
-              <p>{parsedAI.timeAnalysis}</p>
-            </div>
+            <h3>⏱️ Time Analysis</h3>
+            <p>{parsedAI.timeAnalysis || "Not available"}</p>
 
-            {/* Accuracy Analysis */}
-            <div>
-              <h3>🎯 Accuracy Analysis</h3>
-              <p>{parsedAI.accuracyAnalysis}</p>
-            </div>
+            <h3>🎯 Accuracy Analysis</h3>
+            <p>{parsedAI.accuracyAnalysis || `${accuracy}%`}</p>
 
-            {/* Exam Readiness */}
-            <div>
-              <h3>🏆 Exam Readiness</h3>
-              <p>{parsedAI.examReadiness}</p>
-            </div>
-
-            {/* Tips */}
-            <div>
-              <h3>💡 Improvement Tips</h3>
-              <ul>
-                {parsedAI.improvementTips.map((tip, i) => (
-                  <li key={i}>{tip}</li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Focus Topics */}
-            <div>
-              <h3>📚 Focus Topics</h3>
-              <ul>
-                {parsedAI.recommendedFocusTopics.map((t, i) => (
-                  <li key={i}>{t}</li>
-                ))}
-              </ul>
-            </div>
+            <h3>🏆 Exam Readiness</h3>
+            <p>{parsedAI.examReadiness}</p>
           </>
         ) : (
-          <p>AI analysis could not be parsed.</p>
+          <p>AI analysis not available</p>
         )}
       </div>
     </div>

@@ -32,8 +32,12 @@ function App() {
             element={<TestScreen />}
           ></Route>
           <Route
-            path="/test/:id"
+            path="/test-analysis/:id"
             element={<TestAnalysis />}
+          ></Route>
+          <Route
+            path="/solutions/"
+            element={<TestScreen />}
           ></Route>
         </Routes>
         <Footer />

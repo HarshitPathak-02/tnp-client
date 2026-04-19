@@ -30,7 +30,7 @@ const Card = (props) => {
                 {props.questions} <i className="fa-solid fa-question"></i>
               </p>
             </div>
-            <Link to={props.path} className="btn btn-primary">
+            <Link to={props.path} state={{testType: props.testType}} className="btn btn-primary">
               <h6>Go somewhere</h6>
             </Link>
           </div>

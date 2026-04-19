@@ -1,0 +1,55 @@
+.coding-container {
+  display: flex;
+  height: 100vh;
+  gap: 10px;
+}
+
+/* LEFT */
+.question-panel {
+  width: 40%;
+  padding: 20px;
+  background: #f9f9f9;
+  overflow-y: auto;
+  border-right: 2px solid #ddd;
+}
+
+.sample-box {
+  background: #fff;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+/* RIGHT */
+.editor-panel {
+  width: 60%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.run-btn {
+  margin-top: 10px;
+  padding: 10px;
+  background: #00c49f;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.output-box {
+  margin-top: 10px;
+  background: #000;
+  color: #0f0;
+  padding: 10px;
+  height: 150px;
+  overflow-y: auto;
+}
+
+/* NAV BUTTONS */
+.nav-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
